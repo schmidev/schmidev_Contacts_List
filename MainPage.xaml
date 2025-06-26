@@ -1,0 +1,27 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             x:Class="YourApp.MainPage"
+             Title="Contacts">
+    <CollectionView x:Name="ContactsCollectionView"
+                    ItemsSource="{Binding GroupedContacts}"
+                    SelectionMode="Single"
+                    IsGrouped="True"
+                    SelectionChanged="OnContactSelected">
+        <CollectionView.GroupHeaderTemplate>
+            <DataTemplate>
+                <Label Text="{Binding Key}" FontAttributes="Bold" FontSize="Large" Padding="10,0"/>
+            </DataTemplate>
+        </CollectionView.GroupHeaderTemplate>
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <Grid Padding="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="60"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="{Binding Photo}" WidthRequest="50" HeightRequest="50" Aspect="AspectFill"/>
+                    <Label Grid.Column="1" Text="{Binding Name}" VerticalOptions="Center"/>
+                </Grid>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</ContentPage>
